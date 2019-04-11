@@ -6,7 +6,7 @@ class TicTacToe
 
     WIN_COMBINATIONS = [[0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]]
 
-    def display_board
+    def display_board()
       puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
       puts "-----------"
       puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
@@ -30,14 +30,14 @@ def valid_move?(index)
   index.between?(0,8) && !position_taken?(index)
 end
 
-def turn(input_to_index)
+def turn(board)
   puts "Please enter 1-9:"
   index = input_to_index(gets.strip)
-  if valid_move?(index)
-    move(index,current_player)
-    display_board
+  if valid_move?(board, index)
+    move(@index, current_player(board))
+    display_board(@board)
   else
-    turn
+    turn(@board)
   end
 end
 
@@ -51,7 +51,7 @@ def turn_count
   return counter
 end
 
-def current_player
+def current_player()
   if turn_count(@board) % 2 == 0
     return "X"
   else
