@@ -101,7 +101,7 @@ def over?
   end
 end
 
-def winner(board)
+def winner
   winner = nil
   WIN_COMBINATIONS.each do |combo|
     if combo.all? {|idx| board[idx] == "X"}
