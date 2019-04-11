@@ -1,6 +1,6 @@
 class TicTacToe
 
-    def initialize (board)
+    def initialize ()
       @board = [" "," "," "," "," "," "," "," "," "]
     end
 
@@ -62,9 +62,9 @@ end
 def won?(board)
   winner = nil
   WIN_COMBINATIONS.each do |val|
-    if val.all? {|idx| board[idx] == "X"}
+    if val.all? {|idx| @board[idx] == "X"}
       winner = val
-    elsif val.all? {|idx| board[idx] == "O"}
+    elsif val.all? {|idx| @board[idx] == "O"}
       winner = val
     else
       false
@@ -78,7 +78,7 @@ def won?(board)
 end
 
 def full?(board)
-  board.all? {|token| token == "X" || token == "O"}
+  @board.all? {|token| token == "X" || token == "O"}
 end
 
 def draw?(board)
@@ -94,7 +94,7 @@ def draw?(board)
 end
 
 def over?(board)
-  if draw?(board) || full?(board) || won?(board)
+  if draw?(@board) || full?(@board) || won?(@board)
     true
   else
     false
