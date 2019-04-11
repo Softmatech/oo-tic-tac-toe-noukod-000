@@ -41,4 +41,89 @@ def turn(board)
   end
 end
 
+def turn_count(board)
+  counter = 0
+  @board.each do |pos|
+    if pos == "X" || pos == "O"
+      counter +=1
+    end
+  end
+  return counter
+end
+
+def current_player(board)
+  if turn_count(@board) % 2 == 0
+    return "X"
+  else
+    return "O"
+  end
+end
+
+def won?(board)
+  winner = nil
+  WIN_COMBINATIONS.each do |val|
+    if val.all? {|idx| board[idx] == "X"}
+      winner = val
+    elsif val.all? {|idx| board[idx] == "O"}
+      winner = val
+    else
+      false
+    end
+  end
+  if winner != nil
+    winner
+  else
+    false
+  end
+end
+
+def full?(board)
+  board.all? {|token| token == "X" || token == "O"}
+end
+
+def draw?(board)
+  if full?(board)
+    if !won?(board)
+      true
+    else
+      false
+    end
+  else
+    false
+  end
+end
+
+def over?(board)
+  if draw?(board) || full?(board) || won?(board)
+    true
+  else
+    false
+  end
+end
+
+def winner(board)
+  winner = nil
+  WIN_COMBINATIONS.each do |combo|
+    if combo.all? {|idx| board[idx] == "X"}
+      winner = "X"
+    elsif combo.all? {|idx| board[idx] == "O"}
+      winner = "O"
+    else
+    end
+  end
+  winner
+end
+winner(board)
+
+def play(board)
+  while !over?(board)
+    turn(board)
+  end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cat's Game!"
+  end
+end
+
 end
