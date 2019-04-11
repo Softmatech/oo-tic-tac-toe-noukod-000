@@ -93,8 +93,8 @@ def draw?
   end
 end
 
-def over?(board)
-  if draw?(@board) || full?(@board) || won?(@board)
+def over?
+  if draw? || full? || won?
     true
   else
     false
