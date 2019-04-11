@@ -81,9 +81,9 @@ def full?
   @board.all? {|token| token == "X" || token == "O"}
 end
 
-def draw?(board)
-  if full?(board)
-    if !won?(board)
+def draw?
+  if full?
+    if !won?
       true
     else
       false
