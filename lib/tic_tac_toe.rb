@@ -59,7 +59,7 @@ def current_player()
   end
 end
 
-def won?(board)
+def won?
   winner = nil
   WIN_COMBINATIONS.each do |val|
     if val.all? {|idx| @board[idx] == "X"}
