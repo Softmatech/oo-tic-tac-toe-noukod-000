@@ -113,7 +113,7 @@ def winner(board)
   end
   winner
 end
-winner(board)
+winner(@board)
 
 def play(board)
   while !over?(board)
