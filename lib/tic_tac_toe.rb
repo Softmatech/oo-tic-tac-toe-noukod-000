@@ -23,7 +23,7 @@ def move(index, charac = "X")
 end
 
 def position_taken?(location)
-  board[location] != " " && board[location] != ""
+  @board[location] != " " && @board[location] != ""
 end
 
 def valid_move?(board, index)
